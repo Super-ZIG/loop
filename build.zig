@@ -13,11 +13,11 @@
         const target    = b.standardTargetOptions(.{});
         const optimize  = b.standardOptimizeOption(.{});
 
-        _ = b.addModule("io", .{ .root_source_file = b.path("src/io.zig") });
+        _ = b.addModule("loop", .{ .root_source_file = b.path("src/loop.zig") });
 
         var main_tests = b.addTest(
         .{
-            .root_source_file   = b.path("src/io.test.zig"),
+            .root_source_file   = b.path("src/loop.test.zig"),
             .target             = target,
             .optimize           = optimize,
         });
