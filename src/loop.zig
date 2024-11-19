@@ -8,13 +8,25 @@
 
 // ═══════════════════════════════════════ CORE ═══════════════════════════════════════  //
     
-    pub inline fn until     (func: anytype, condition: anytype)                     void
+    pub inline fn until     ( _cond: anytype, _call: anytype )
+    void
     {
         while (true)
         {
-            func();
+            _call();
 
-            if(!condition()) break;
+            if(!_cond()) break;
+        }
+    }
+
+    pub inline fn untilWith ( _cond: anytype, _call: anytype, _args: anytype )
+    void
+    {
+        while (true)
+        {
+            @call(.auto, _call, _args);
+
+            if(!_cond()) break;
         }
     }
 

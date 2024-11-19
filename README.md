@@ -27,7 +27,7 @@ Here’s a quick example to get started:
           return _prefix ++ msg;
       }
 
-      inline fn handler() void 
+      inline fn callback() void 
       {
           const name = io.ask(MSG("What is your name ?"));
           io.outFMT(MSG("Welcome Mr : {s}\n"), .{ name });
@@ -45,7 +45,7 @@ Here’s a quick example to get started:
       {
           io.out(MSG("Welcome!"));
 
-          loop.until(handler, condition); // <----------------- HERE
+          loop.until(condition, callback); // <----------------- HERE
 
           io.out(MSG("Goodbye!"));
       }
@@ -81,12 +81,16 @@ n
 
 - **`until`**
 
-  >..?
-  
-  ```zig
-  pub inline fn until     (func: anytype, condition: anytype)                   void
-  ```
+    >..?
 
+    ```zig
+    pub inline fn until     (condition: anytype, callback: anytype)                     void
+    ```
+
+    ```zig
+    pub inline fn untilWith (condition: anytype, callback: anytype, arg: anytype)       void 
+    ```
+    
 ---
 
 ## **Installation**  
